@@ -232,12 +232,13 @@ function setupErrorHandler(app: express.Application) {
 
   configureExpoAndLanding(app);
 
-  const server = await registerRoutes(app);
+  registerRoutes(app);
 
   setupErrorHandler(app);
 
-  const PORT = process.env.PORT || 10000;
+  const port = Number(process.env.PORT) || 10000;
 
-server.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on port ${PORT}`);
-});
+  app.listen(port, "0.0.0.0", () => {
+    console.log(`Server running on port ${port}`);
+  });
+})();
